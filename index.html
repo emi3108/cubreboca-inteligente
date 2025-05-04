@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cubrebocas Inteligente</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4f8;
+      color: #333;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.4em;
+    }
+    .value {
+      font-size: 2em;
+      font-weight: bold;
+      color: #2196F3;
+    }
+    .description {
+      font-size: 0.95em;
+      color: #666;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cubrebocas Inteligente</h1>
+    <p>Simulador de datos en tiempo real</p>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h2>Frecuencia Cardíaca (BPM)</h2>
+      <div class="value" id="bpm">--</div>
+      <div class="description">La frecuencia con la que late tu corazón por minuto.</div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Heart_rate_monitor_diagram.png" alt="Pulso cardíaco" />
+    </div>
+
+    <div class="card">
+      <h2>Señal Infrarroja (IR)</h2>
+      <div class="value" id="ir">--</div>
+      <div class="description">La cantidad de luz infrarroja detectada por el sensor, usada para medir el pulso.</div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Infrared_spectrum.svg/800px-Infrared_spectrum.svg.png" alt="IR" />
+    </div>
+
+    <div class="card">
+      <h2>Calidad del Aire</h2>
+      <div class="value">CO₂: <span id="co2">--</span> ppm</div>
+      <div class="value">TVOC: <span id="tvoc">--</span> ppb</div>
+      <div class="description">Estos valores indican la concentración de dióxido de carbono y compuestos orgánicos volátiles en el aire.</div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Air_pollution.svg" alt="Calidad del aire" />
+    </div>
+  </div>
+
+  <script>
+    function generarDatos() {
+      // Simula datos aleatorios en rangos normales
+      const bpm = Math.floor(Math.random() * 40) + 60; // 60-100 BPM
+      const ir = Math.floor(Math.random() * 10000) + 50000; // 50,000 - 60,000
+      const co2 = Math.floor(Math.random() * 300) + 400; // 400 - 700 ppm
+      const tvoc = Math.floor(Math.random() * 100) + 50; // 50 - 150 ppb
+
+      document.getElementById("bpm").innerText = bpm;
+      document.getElementById("ir").innerText = ir;
+      document.getElementById("co2").innerText = co2;
+      document.getElementById("tvoc").innerText = tvoc;
+    }
+
+    // Actualiza cada segundo
+    setInterval(generarDatos, 1000);
+  </script>
+</body>
+</html>
